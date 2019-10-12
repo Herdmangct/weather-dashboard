@@ -7,6 +7,9 @@ import * as serviceWorker from "./serviceWorker";
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// css
+import "./css/weather-icons.css";
+
 ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change

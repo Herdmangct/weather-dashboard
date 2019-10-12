@@ -3,14 +3,11 @@ import React from "react";
 // Bootstrap
 import Col from "react-bootstrap/Col";
 
-// Weather Icons
-import { WiDayCloudy } from "weather-icons-react";
-
 const WeatherForecastCard = props => {
   return (
     <Col>
       <div style={styles.cardInfo}>
-        <WiDayCloudy size={120} color="#f58520" />
+        <i className="wi wi-owm-501" style={styles.weatherIcon}></i>
         <h3 style={styles.day}>Tomorrow</h3>
         <h4 style={styles.degrees}> 17&#176;</h4>
       </div>
@@ -27,8 +24,12 @@ const styles = {
     alignItems: "center",
     padding: "25px"
   },
+  weatherIcon: {
+    fontSize: "90px",
+    color: "#f58520"
+  },
   day: {
-    marginTop: "-30px",
+    marginTop: "10px",
     color: "#F6B27E"
   },
   degrees: {
