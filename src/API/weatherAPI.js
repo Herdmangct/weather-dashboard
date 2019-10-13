@@ -99,15 +99,11 @@ export const monthNumberToString = {
   }
 };
 
-export const getTodaysDate = () => {
-  const days = {
-    1: "Monday",
-    2: "Tuesday",
-    3: "Wednesday",
-    4: "Thursday",
-    5: "Friday",
-    6: "Saturday",
-    0: "Sunday"
-  };
-  const today = new Date();
+export const dateToDayString = (startDateObject, date) => {
+  /**
+   * Given a startDate:int and a date:int (> startDate) converts the date into the name of the day (String)
+   */
+  const difference = date - startDateObject.getDate();
+  const dayNumber = (startDateObject.getDay() + difference) % 7;
+  return dayNumberToString.getDay(dayNumber);
 };

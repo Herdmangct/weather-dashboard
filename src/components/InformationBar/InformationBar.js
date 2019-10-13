@@ -1,28 +1,45 @@
-import React, { Component } from "react";
+import React from "react";
 
-// My Components
-import FutureWeatherCard from "./FutureWeatherCard";
-import Divider from "../General/Divider";
-
-// Bootstrap
 import Row from "react-bootstrap/Row";
 
-class InformationBar extends Component {
-  render() {
-    return (
-      <div style={styles.informationBar}>
-        <Row style={styles.contentContainer}>
-          {[...Array(4)].map((x, i) => (
-            <React.Fragment key={i}>
-              <FutureWeatherCard dayNumber={i + 1} />
-              {i < 3 ? <Divider /> : ""}
-            </React.Fragment>
-          ))}
-        </Row>
-      </div>
-    );
-  }
-}
+// My Components
+import WeatherCard from "./WeatherCard";
+import Divider from "../General/Divider";
+
+// My API
+import { dateToDayString } from "../../API/weatherAPI";
+
+// Bootstrap
+
+const InformationBar = props => {
+  const { forecastInformation, currentDate } = props;
+  const forecastDates = Object.keys(forecastInformation).filter(date => {
+    return date > currentDate.getDate() && date <= currentDate.getDate() + 4;
+  });
+
+  return (
+    <div style={styles.informationBar}>
+      <Row style={styles.contentContainer}>
+        {forecastDates.map((date, i) => (
+          <React.Fragment key={i}>
+            <WeatherCard
+              day={i === 0 ? "Tomorrow" : dateToDayString(currentDate, date)}
+              temperature={forecastInformation[date].temperature}
+              weatherConditionsID={forecastInformation[date].weatherConditions}
+            />
+            {i < 3 ? <Divider /> : ""}
+          </React.Fragment>
+        ))}
+        {/* {[...Array(4)].map((x, i) => (
+          <React.Fragment key={i}>
+            <WeatherCard dayNumber={i + 1} />
+            {i < 3 ? <Divider /> : ""}
+          </React.Fragment>
+        ))} */}
+      </Row>
+    </div>
+  );
+};
 
 const styles = {
   informationBar: {

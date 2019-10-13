@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 // Bootstrap
 import Row from "react-bootstrap/Row";
@@ -9,32 +9,49 @@ import Spinner from "react-bootstrap/Spinner";
 import { dayNumberToString, monthNumberToString } from "../../API/weatherAPI";
 
 const Header = props => {
-  const { currentTemperature, currentWeatherID } = props;
-  const today = new Date();
-  return (
-    <div style={styles.headerContent}>
-      <Row>
-        <Col md={{ span: 2 }}>
-          <i
-            className={`wi wi-owm-${currentWeatherID}`}
-            style={styles.weatherIcon}
-          ></i>
-        </Col>
-        <Col md={{ span: 3 }} style={styles.degreesContainer}>
-          <h1 style={styles.degrees}>{currentTemperature}&#176;</h1>
-        </Col>
-        <Col md={{ span: 6 }}></Col>
-      </Row>
-      <Row>
-        <Col style={styles.date}>
-          <h1>
-            {dayNumberToString.getDay(today.getDay())},{" "}
-            {monthNumberToString.getMonth(today.getMonth())} {today.getDate()}
-          </h1>
-        </Col>
-      </Row>
-    </div>
-  );
+  const { currentTemperature, currentWeatherID, currentDate } = props;
+
+  if (currentWeatherID && currentWeatherID) {
+    return (
+      <div style={styles.headerContent}>
+        <Row>
+          <Col md={{ span: 2 }}>
+            <i
+              className={`wi wi-owm-${currentWeatherID}`}
+              style={styles.weatherIcon}
+            ></i>
+          </Col>
+          <Col md={{ span: 3 }} style={styles.degreesContainer}>
+            <h1 style={styles.degrees}>{currentTemperature}&#176;</h1>
+          </Col>
+          <Col md={{ span: 6 }}></Col>
+        </Row>
+        <Row>
+          <Col style={styles.date}>
+            <h1>
+              {dayNumberToString.getDay(currentDate.getDay())},{" "}
+              {monthNumberToString.getMonth(currentDate.getMonth())}{" "}
+              {currentDate.getDate()}
+            </h1>
+          </Col>
+        </Row>
+      </div>
+    );
+  } else {
+    return (
+      <div
+        style={{
+          ...styles.headerContent,
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        <Spinner animation="border" role="status" color="white">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
 };
 
 const styles = {
