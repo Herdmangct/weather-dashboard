@@ -3,43 +3,39 @@ import React, { Component } from "react";
 // Bootstrap
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Spinner from "react-bootstrap/Spinner";
 
-// Weather Icons
-// import { WiDayCloudy } from "weather-icons-react";
+// My API
+import { dayNumberToString, monthNumberToString } from "../../API/weatherAPI";
 
-class Header extends Component {
-  render() {
-    return (
-      <div style={styles.headerContent}>
-        <Row>
-          <Col md={{ span: 2 }}>
-            <i className="wi wi-owm-501" style={styles.weatherIcon}></i>
-            {/* <i className="wi wi-day-sunny" style={{ fontSize: "125px" }}></i> */}
-            {/* <div style={{ width: "160px", height: "125px" }}>
-              <WeatherIcon
-                name="owm"
-                iconId="200"
-                flip="horizontal"
-                rotate="90"
-                style={{ width: "100%", height: "100%" }}
-              />
-            </div> */}
-            {/* <WiDayCloudy size={180} height={170} color="white" /> */}
-          </Col>
-          <Col md={{ span: 3 }} style={styles.degreesContainer}>
-            <h1 style={styles.degrees}>15 &#176;</h1>
-          </Col>
-          <Col md={{ span: 6 }}></Col>
-        </Row>
-        <Row>
-          <Col style={styles.date}>
-            <h1>Wednesday, May 9</h1>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
-}
+const Header = props => {
+  const { currentTemperature, currentWeatherID } = props;
+  const today = new Date();
+  return (
+    <div style={styles.headerContent}>
+      <Row>
+        <Col md={{ span: 2 }}>
+          <i
+            className={`wi wi-owm-${currentWeatherID}`}
+            style={styles.weatherIcon}
+          ></i>
+        </Col>
+        <Col md={{ span: 3 }} style={styles.degreesContainer}>
+          <h1 style={styles.degrees}>{currentTemperature}&#176;</h1>
+        </Col>
+        <Col md={{ span: 6 }}></Col>
+      </Row>
+      <Row>
+        <Col style={styles.date}>
+          <h1>
+            {dayNumberToString.getDay(today.getDay())},{" "}
+            {monthNumberToString.getMonth(today.getMonth())} {today.getDate()}
+          </h1>
+        </Col>
+      </Row>
+    </div>
+  );
+};
 
 const styles = {
   headerContent: {

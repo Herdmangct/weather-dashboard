@@ -64,19 +64,50 @@ export const getFutureWeather = async city => {
     });
 };
 
-// await axios
-//   .get(
-//     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
-//   )
-//   .then(({ data }) => {
-//     return {
-//       todaysTemperature: data.main.temp.toFixed(0),
-//       todaysWeatherConditionID: data.weather[0].id
-//     };
-//   })
-//   .then(({ todaysTemperature, todaysWeatherConditionID }) => {
-//     console.log({
-//       today: new WeatherObject(todaysTemperature, todaysWeatherConditionID)
-//     });
-//     // this.setState({weatherConditions: new WeatherObject(todaysTemperature, todaysWeatherConditions)} )
-//   });
+export const dayNumberToString = {
+  days: {
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday",
+    0: "Sunday"
+  },
+  getDay: function(dayNumber) {
+    return this.days[dayNumber];
+  }
+};
+
+export const monthNumberToString = {
+  months: {
+    0: "January",
+    1: "February",
+    2: "March",
+    3: "April",
+    4: "May",
+    5: "June",
+    6: "July",
+    7: "August",
+    8: "September",
+    9: "October",
+    10: "November",
+    11: "December"
+  },
+  getMonth: function(monthNumber) {
+    return this.months[monthNumber];
+  }
+};
+
+export const getTodaysDate = () => {
+  const days = {
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday",
+    0: "Sunday"
+  };
+  const today = new Date();
+};

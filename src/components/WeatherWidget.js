@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 
-// External Libraries
-import _ from "underscore";
-
 // My Components
 import Header from "./Header/Header";
 import InformationBar from "./InformationBar/InformationBar";
@@ -35,9 +32,6 @@ class WeatherWidget extends Component {
     // get weather for today
     getTodaysWeather("sydney").then(
       ({ todaysTemperature, todaysWeatherConditionID }) => {
-        console.log("Todays Weather:", {
-          today: new WeatherObject(todaysTemperature, todaysWeatherConditionID)
-        });
         this.setState({
           today: new WeatherObject(todaysTemperature, todaysWeatherConditionID)
         });
@@ -46,7 +40,6 @@ class WeatherWidget extends Component {
 
     // get weather forecast
     getFutureWeather("sydney").then(forecast => {
-      console.log("Forecast:", forecast);
       this.setState({
         forecast: forecast
       });
@@ -54,11 +47,12 @@ class WeatherWidget extends Component {
   }
 
   render() {
-    // const weatherIcons = { "01d": Wi["WiDaySunny"] };
-    // console.log(weatherIcons);
     return (
       <div style={styles.weatherWidgetContainer}>
-        <Header />
+        <Header
+          currentTemperature={this.state.today.temperature}
+          currentWeatherID={this.state.today.weatherConditions}
+        />
         <InformationBar />
       </div>
     );
@@ -80,19 +74,3 @@ const styles = {
 };
 
 export default WeatherWidget;
-
-// error => {
-//     switch (error.code) {
-//       case error.PERMISSION_DENIED:
-//         alert("User denied the request for Geolocation.");
-//         break;
-//       case error.POSITION_UNAVAILABLE:
-//         alert("Location information is unavailable.");
-//         break;
-//       case error.TIMEOUT:
-//         alert("The request to get user location timed out.");
-//         break;
-//       default:
-//         alert("An unknown error occurred.");
-//         break;
-//     }
