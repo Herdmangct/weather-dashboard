@@ -30,7 +30,7 @@ class WeatherWidget extends Component {
       .city;
     const city = queryCity ? queryCity : this.state.city;
     this.props.history.replace("");
-    this.props.history.push(`?city=${city}`);
+    this.props.history.push(`weather-dashboard/?city=${city}`);
     this.fetchWeatherForecast(city);
   }
 
