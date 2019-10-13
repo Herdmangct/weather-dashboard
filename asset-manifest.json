@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/weather-dashboard/static/css/main.275accfd.chunk.css",
+    "main.js": "/weather-dashboard/static/js/main.578ffd59.chunk.js",
+    "main.js.map": "/weather-dashboard/static/js/main.578ffd59.chunk.js.map",
+    "runtime-main.js": "/weather-dashboard/static/js/runtime-main.e0da8570.js",
+    "runtime-main.js.map": "/weather-dashboard/static/js/runtime-main.e0da8570.js.map",
+    "static/css/2.0624914a.chunk.css": "/weather-dashboard/static/css/2.0624914a.chunk.css",
+    "static/js/2.e934290d.chunk.js": "/weather-dashboard/static/js/2.e934290d.chunk.js",
+    "static/js/2.e934290d.chunk.js.map": "/weather-dashboard/static/js/2.e934290d.chunk.js.map",
+    "index.html": "/weather-dashboard/index.html",
+    "precache-manifest.a6171f5612b1e176ef5b68de447163db.js": "/weather-dashboard/precache-manifest.a6171f5612b1e176ef5b68de447163db.js",
+    "service-worker.js": "/weather-dashboard/service-worker.js",
+    "static/css/2.0624914a.chunk.css.map": "/weather-dashboard/static/css/2.0624914a.chunk.css.map",
+    "static/css/main.275accfd.chunk.css.map": "/weather-dashboard/static/css/main.275accfd.chunk.css.map",
+    "static/media/weather-icons.css": "/weather-dashboard/static/media/weathericons-regular-webfont.ecaf8b48.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e0da8570.js",
+    "static/css/2.0624914a.chunk.css",
+    "static/js/2.e934290d.chunk.js",
+    "static/css/main.275accfd.chunk.css",
+    "static/js/main.578ffd59.chunk.js"
+  ]
+}
